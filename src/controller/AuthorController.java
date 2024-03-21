@@ -4,8 +4,6 @@ import entity.Author;
 import model.AuthorModel;
 
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class AuthorController {
 
@@ -17,7 +15,7 @@ public class AuthorController {
 
     public String listAuthors() {
         StringBuilder list = new StringBuilder();
-        list.append("\n......:::::::Authors List:::::::......");
+        list.append("......:::::::Authors List:::::::......");
         if (!authorModel.findAll().isEmpty()) {
             for (Object objAuthor : authorModel.findAll()) {
                 Author author = (Author) objAuthor;
@@ -30,15 +28,45 @@ public class AuthorController {
 
     }
 
+    public void updateAuthor() {
+        StringBuilder message = new StringBuilder();
+        message.append(listAuthors());
+        try {
+            int id = Integer.parseInt(JOptionPane.showInputDialog(null, message.append("\n\nEnter id to update").toString()));
+            if (authorModel.findById(id) != null) {
+                Author author = (Author) authorModel.findById(id);
+                String name = JOptionPane.showInputDialog(null, "Enter new author name", author.getName());
+                String nationality = JOptionPane.showInputDialog(null, "Enter new author nationality", author.getNationality());
+                author.setName(name);
+                author.setNationality(nationality);
+                if (authorModel.update(author)) {
+                    JOptionPane.showMessageDialog(null, "Author updated Successfully\n" + author);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed to update the author\n" + author);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Author doesn't exist in the database");
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+    }
+
     public void deleteAuthor() {
         StringBuilder message = new StringBuilder();
         message.append(listAuthors());
-        int id = Integer.parseInt(JOptionPane.showInputDialog(null, message.append("\n\nEnter id to delete").toString()));
-        if (authorModel.delete(id)) {
-            JOptionPane.showMessageDialog(null, "Author deleted Successfully");
-        } else {
-            JOptionPane.showMessageDialog(null, "Author doesn't exist in the database");
+        try {
+            int id = Integer.parseInt(JOptionPane.showInputDialog(null, message.append("\n\nEnter id to delete").toString()));
+            if (authorModel.delete(id)) {
+                JOptionPane.showMessageDialog(null, "Author deleted Successfully");
+            } else {
+                JOptionPane.showMessageDialog(null, "Author doesn't exist in the database");
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
+
     }
 
     public void insertAuthor() {
@@ -68,17 +96,17 @@ public class AuthorController {
 
     public String findAuthorByName() {
         StringBuilder list = new StringBuilder();
-        list.append("\n......:::::::Authors List:::::::......");
+        list.append("......:::::::Authors List:::::::......");
 
-            String toSearch = JOptionPane.showInputDialog(null, "Enter the name to search");
-            if (!authorModel.findByName(toSearch).isEmpty()) {
-                for (Object objAuthor : authorModel.findByName(toSearch)) {
-                    Author author = (Author) objAuthor;
-                    list.append("\nId: ").append(author.getId()).append("\nName: ").append(author.getName()).append("\nNationality: ").append(author.getNationality());
+        String toSearch = JOptionPane.showInputDialog(null, "Enter the name to search");
+        if (!authorModel.findByName(toSearch).isEmpty()) {
+            for (Object objAuthor : authorModel.findByName(toSearch)) {
+                Author author = (Author) objAuthor;
+                list.append("\nId: ").append(author.getId()).append("\nName: ").append(author.getName()).append("\nNationality: ").append(author.getNationality());
 
-                }
-                return list.toString();
             }
+            return list.toString();
+        }
 
         return list.append("\nThere are no authors in this list").toString();
     }

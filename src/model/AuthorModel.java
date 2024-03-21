@@ -38,7 +38,25 @@ public class AuthorModel implements CRUD {
 
     @Override
     public boolean update(Object object) {
-        return false;
+        boolean isUpdated = false;
+        Author author = (Author)object;
+        Connection connection = ConfigDB.openConnection();
+        String sql = "UPDATE author SET name = ?, nationality = ? WHERE idauthor = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1,author.getName());
+            ps.setString(2,author.getNationality());
+            ps.setInt(3,author.getId());
+            if (ps.executeUpdate()>0){
+                System.out.println("Update: Author Updated successfully");
+                isUpdated = true;
+            }
+        }catch (SQLException e){
+            System.out.println("Update: Error in database\n"+e.getMessage());
+        }finally {
+            ConfigDB.closeConnection();
+        }
+        return isUpdated;
     }
 
     @Override
@@ -103,10 +121,10 @@ public class AuthorModel implements CRUD {
     public List<Object> findByName(String name) {
         List<Object> authorsFound = new ArrayList<>();
         Connection connection = ConfigDB.openConnection();
-        String sql = "SELECT * from author where name like = ?";
+        String sql = "SELECT * from author where name like ?;";
         try{
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1,"'%"+name+"'%;"); //CHECK THIS LINE//CHECK THIS LINE//CHECK THIS LINE//CHECK THIS LINE
+            ps.setString(1,"%"+name+"%");
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
                 authorsFound.add(new Author(rs.getInt("idauthor"), rs.getString("name"), rs.getString("nationality")));
