@@ -18,20 +18,20 @@ public class AuthorModel implements CRUD {
         Author author = (Author) object;
         Connection connection = ConfigDB.openConnection();
         String sql = "INSERT INTO author (name, nationality) values (?,?);";
-        try{
-            PreparedStatement ps = connection.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
-            ps.setString(1,author.getName());
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            ps.setString(1, author.getName());
             ps.setString(2, author.getNationality());
             int rows = ps.executeUpdate();
-            if (rows > 0){
+            if (rows > 0) {
                 ResultSet rs = ps.getGeneratedKeys();
-                if (rs.next()){
+                if (rs.next()) {
                     author.setId(rs.getInt(1));
                     System.out.println("Insert: Author inserted successfully");
                 }
             }
-        }catch (SQLException e){
-            System.out.println("Insert: Error in database\n"+e.getMessage());
+        } catch (SQLException e) {
+            System.out.println("Insert: Error in database\n" + e.getMessage());
         }
         return author;
     }
@@ -66,14 +66,14 @@ public class AuthorModel implements CRUD {
         String sql = "DELETE FROM author where idauthor=?;";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1,id);
-            if(ps.executeUpdate()>0){
+            ps.setInt(1, id);
+            if (ps.executeUpdate() > 0) {
                 System.out.println("Delete: Author deleted successfully");
                 isDelete = true;
             }
             ConfigDB.closeConnection();
         } catch (SQLException e) {
-            System.out.println("Delete: Error in database\n"+e.getMessage());
+            System.out.println("Delete: Error in database\n" + e.getMessage());
         }
         return isDelete;
     }
@@ -101,17 +101,17 @@ public class AuthorModel implements CRUD {
     public Object findById(int id) {
         Connection connection = ConfigDB.openConnection();
         String sql = "SELECT * from author where idauthor=?;";
-        try{
+        try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1,id);
+            ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             //if for single result
-            if (rs.next()){
+            if (rs.next()) {
                 return new Author(rs.getInt("idauthor"), rs.getString("name"), rs.getString("nationality"));
             }
-        }catch (SQLException e){
-            System.out.println("FindById: Error in database\n"+e.getMessage());
-        }finally {
+        } catch (SQLException e) {
+            System.out.println("FindById: Error in database\n" + e.getMessage());
+        } finally {
             ConfigDB.closeConnection();
         }
         return null;
@@ -126,12 +126,12 @@ public class AuthorModel implements CRUD {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1,"%"+name+"%");
             ResultSet rs = ps.executeQuery();
-            while (rs.next()){
+            while (rs.next()) {
                 authorsFound.add(new Author(rs.getInt("idauthor"), rs.getString("name"), rs.getString("nationality")));
             }
-        }catch (SQLException e){
-            System.out.println("FindByName: Error in database\n"+e.getMessage());
-        }finally {
+        } catch (SQLException e) {
+            System.out.println("FindByName: Error in database\n" + e.getMessage());
+        } finally {
             ConfigDB.closeConnection();
         }
         return authorsFound;
