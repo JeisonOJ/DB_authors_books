@@ -81,11 +81,41 @@ public class AuthorModel implements CRUD {
 
     @Override
     public Object findById(int id) {
+        Connection connection = ConfigDB.openConnection();
+        String sql = "SELECT * from author where idauthor=?;";
+        try{
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1,id);
+            ResultSet rs = ps.executeQuery();
+            //if for single result
+            if (rs.next()){
+                return new Author(rs.getInt("idauthor"), rs.getString("name"), rs.getString("nationality"));
+            }
+        }catch (SQLException e){
+            System.out.println("FindById: Error in database\n"+e.getMessage());
+        }finally {
+            ConfigDB.closeConnection();
+        }
         return null;
     }
 
     @Override
-    public Object findByName(String name) {
-        return null;
+    public List<Object> findByName(String name) {
+        List<Object> authorsFound = new ArrayList<>();
+        Connection connection = ConfigDB.openConnection();
+        String sql = "SELECT * from author where name like = ?";
+        try{
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1,"'%"+name+"'%;"); //CHECK THIS LINE//CHECK THIS LINE//CHECK THIS LINE//CHECK THIS LINE
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                authorsFound.add(new Author(rs.getInt("idauthor"), rs.getString("name"), rs.getString("nationality")));
+            }
+        }catch (SQLException e){
+            System.out.println("FindByName: Error in database\n"+e.getMessage());
+        }finally {
+            ConfigDB.closeConnection();
+        }
+        return authorsFound;
     }
 }

@@ -8,5 +8,5 @@ public interface CRUD {
     public boolean delete(int id);
     public List<Object> findAll();
     public Object findById(int id);
-    public Object findByName(String name);
+    public List<Object> findByName(String name);
 }
