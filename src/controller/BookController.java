@@ -103,7 +103,7 @@ public class BookController {
         return book;
     }
 
-    public String findBookByName() {
+    public String findBookByTitle() {
         StringBuilder list = new StringBuilder();
         list.append("......:::::::Books List:::::::......");
 
