@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConfigDB {
-    private static final String url = "jdbc:mysql://localhost:3306/crudjdbc";
-    private static final String user = "root";
-    private static final String password = "Rlwl2023.";
+    private static final String url = "jdbc:mysql://u4phkrgr21xcsz5i:VrRoh1YQIr0ROJgqPl78@bcu7n02sjkrmdd7hqwqm-mysql.services.clever-cloud.com:3306/bcu7n02sjkrmdd7hqwqm";
+    private static final String user = "u4phkrgr21xcsz5i";
+    private static final String password = "VrRoh1YQIr0ROJgqPl78";
     public static Connection connection = null;
     public static Connection openConnection(){
         try{

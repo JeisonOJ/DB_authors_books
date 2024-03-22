@@ -7,6 +7,7 @@ import javax.swing.*;
 
 public class BookController {
     private BookModel bookModel;
+    private AuthorController authorController= new AuthorController();
 
     public BookController(){
         bookModel = new BookModel();
@@ -14,14 +15,14 @@ public class BookController {
 
     public String listBooks() {
         StringBuilder list = new StringBuilder();
-        list.append("......:::::::Books List:::::::......");
+        list.append("......::::::Books List::::::......");
         if (!bookModel.findAll().isEmpty()) {
             for (Object objBook : bookModel.findAll()) {
                 Book book = (Book) objBook;
                 list.append("\nId: ").append(book.getId()).append("\nTitle: ").append(book.getTitle())
                         .append("\nYear: ").append(book.getYear())
                         .append("\nPrice: ").append(book.getPrice())
-                        .append("\nIdAuthor: ").append(book.getIdAuthor());
+                        .append("\nIdAuthor: ").append(book.getIdAuthor()).append("\n");
             }
             return list.toString();
         }
@@ -37,7 +38,7 @@ public class BookController {
                 String title = JOptionPane.showInputDialog(null, "Enter new book title", book.getTitle());
                 int year = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter new book year", book.getYear()));
                 double price = Double.parseDouble(JOptionPane.showInputDialog(null, "Enter new book price", book.getPrice()));
-                int idAuthor = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter new id author for the book", book.getIdAuthor()));
+                int idAuthor = Integer.parseInt(JOptionPane.showInputDialog(null, authorController.listAuthors()+"\nEnter new id author for the book", book.getIdAuthor()));
                 book.setTitle(title);
                 book.setYear(year);
                 book.setPrice(price);
@@ -75,7 +76,7 @@ public class BookController {
             String title = JOptionPane.showInputDialog(null, "Enter the book title");
             int year = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter the book year"));
             double price = Double.parseDouble(JOptionPane.showInputDialog(null, "Enter the book price"));
-            int idAuthor = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter new id author for the book"));
+            int idAuthor = Integer.parseInt(JOptionPane.showInputDialog(null, authorController.listAuthors()+"\nEnter id author for the book"));
             Book book = new Book();
             book.setTitle(title);
             book.setYear(year);

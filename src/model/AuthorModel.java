@@ -3,6 +3,7 @@ package model;
 import database.CRUD;
 import database.ConfigDB;
 import entity.Author;
+import entity.AuthorBook;
 import entity.Book;
 
 import java.sql.Connection;
@@ -139,7 +140,7 @@ public class AuthorModel implements CRUD {
     }
 
     public List<Object> findAllBooks(int id) {
-        List<Object> booksFound = new ArrayList<>();
+        List<Object> booksList = new ArrayList<>();
         Connection connection = ConfigDB.openConnection();
         String sql = "select * from author inner join book where author.idauthor = book.idauthor and author.idauthor = ?;";
         try{
@@ -147,14 +148,22 @@ public class AuthorModel implements CRUD {
             ps.setInt(1,id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                booksFound.add(new Book(rs.getInt("idbook"),rs.getString("title"), rs.getInt("year"),rs.getDouble("price"),rs.getInt("idauthor")));
+                AuthorBook authorBook = new AuthorBook();
+                authorBook.setIdAuthor(rs.getInt("idauthor"));
+                authorBook.setIdBook(rs.getInt("idbook"));
+                authorBook.setName(rs.getString("name"));
+                authorBook.setNationality(rs.getString("nationality"));
+                authorBook.setTitle(rs.getString("title"));
+                authorBook.setYear(rs.getInt("year"));
+                authorBook.setPrice(rs.getDouble("price"));
+                booksList.add(authorBook);
             }
         } catch (SQLException e) {
             System.out.println("findAllBooks: Error in database\n" + e.getMessage());
         } finally {
             ConfigDB.closeConnection();
         }
-        return booksFound;
+        return booksList;
     }
 
 }

@@ -10,8 +10,7 @@ public class Main {
                 ....::::::MENU::::::....
                 1. Authors menu.
                 2. Books menu.
-                3. Relation Authors-books menu.
-                4. Exit.
+                3. Exit.
                 """;
         do {
             optionGeneral = JOptionPane.showInputDialog(null,messageGeneral);
@@ -60,7 +59,7 @@ public class Main {
                                 JOptionPane.showMessageDialog(null,controller.findAuthorById());
                                 break;
                             case "7":
-                                controller.getAllbooks();
+                                JOptionPane.showMessageDialog(null,controller.getAllbooks());
                                 break;
                             case "8":
                                 JOptionPane.showMessageDialog(null, "You are leaving the menu...");
@@ -120,12 +119,9 @@ public class Main {
                     } while (!optionBook.equals("7"));
                     break;
                 case "3":
-                    System.out.println("Relation...");
-                    break;
-                case "4":
                     JOptionPane.showMessageDialog(null, "You are leaving the menu...");
                     break;
             }
-        }while (!optionGeneral.equals("4"));
+        }while (!optionGeneral.equals("3"));
     }
 }

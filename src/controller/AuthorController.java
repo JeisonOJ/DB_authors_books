@@ -1,6 +1,7 @@
 package controller;
 
 import entity.Author;
+import entity.AuthorBook;
 import entity.Book;
 import model.AuthorModel;
 
@@ -21,7 +22,7 @@ public class AuthorController {
         if (!authorModel.findAll().isEmpty()) {
             for (Object objAuthor : authorModel.findAll()) {
                 Author author = (Author) objAuthor;
-                list.append("\nId: ").append(author.getId()).append("\nName: ").append(author.getName()).append("\nNationality: ").append(author.getNationality());
+                list.append("\nId: ").append(author.getId()).append("\nName: ").append(author.getName()).append("\nNationality: ").append(author.getNationality()).append("\n");
 
             }
             return list.toString();
@@ -113,21 +114,32 @@ public class AuthorController {
         return list.append("\nThere are no authors in this list").toString();
     }
 
-    public String getAllbooks(){
+    public String getAllbooks() {
+        StringBuilder list = new StringBuilder();
+        list.append("......::::::Books List::::::......");
         try {
             int toSearch = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter the id to search"));
             List<Object> objectList = authorModel.findAllBooks(toSearch);
             if (!objectList.isEmpty()) {
-                for (Object object: objectList){
-                    Book book = (Book) object;
+                AuthorBook authorData = (AuthorBook) objectList.getFirst();
+                list.append("\nAuthor's name: ").append(authorData.getName())
+                        .append("\nAuthor id: ").append(authorData.getIdAuthor())
+                        .append("\nNationality: ").append(authorData.getNationality())
+                        .append("\n\nBOOKS\n");
+                for (Object object : objectList) {
+                    AuthorBook authorBook = (AuthorBook) object;
+                    list.append("\nTitle: ").append(authorBook.getTitle())
+                            .append("\nBook id: ").append(authorBook.getIdBook())
+                            .append("\nYear: ").append(authorBook.getYear())
+                            .append("\nPrice: ").append(authorBook.getPrice()).append("\n");
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Author doesn't exist in database");
+                JOptionPane.showMessageDialog(null, "Author doesn't exist in database or doesn't have any book");
             }
         } catch (Exception e) {
             System.out.println("getAllbooks: no valid number\n" + e.getMessage());
         }
-
+        return list.toString();
     }
 
 }
