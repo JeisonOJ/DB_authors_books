@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="561410db-41f2-4c8e-819f-7d6fe21a253f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DB_authors_books.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DB_authors_books.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/AuthorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/AuthorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/BookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/ConfigDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/ConfigDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Author.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Author.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/AuthorBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/AuthorBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/AuthorModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/AuthorModel.java" afterDir="false" />
-    </list>
+    <list default="true" id="561410db-41f2-4c8e-819f-7d6fe21a253f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
