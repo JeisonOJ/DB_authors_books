@@ -42,7 +42,7 @@ public class AuthorController {
                 if (authorModel.update(author)) {
                     JOptionPane.showMessageDialog(null, "Author updated Successfully\n" + author);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Failed to update the author\n" + author);
+                    JOptionPane.showMessageDialog(null, "Failed to update the author");
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Author doesn't exist in the database");
