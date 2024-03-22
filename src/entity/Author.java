@@ -1,9 +1,12 @@
 package entity;
 
+import java.util.List;
+
 public class Author {
     private int id;
     private String name;
     private String nationality;
+    private List<Book> books;
 
     public Author(){}
 

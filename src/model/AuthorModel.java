@@ -3,6 +3,7 @@ package model;
 import database.CRUD;
 import database.ConfigDB;
 import entity.Author;
+import entity.Book;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -136,4 +137,24 @@ public class AuthorModel implements CRUD {
         }
         return authorsFound;
     }
+
+    public List<Object> findAllBooks(int id) {
+        List<Object> booksFound = new ArrayList<>();
+        Connection connection = ConfigDB.openConnection();
+        String sql = "select * from author inner join book where author.idauthor = book.idauthor and author.idauthor = ?;";
+        try{
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1,id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                booksFound.add(new Book(rs.getInt("idbook"),rs.getString("title"), rs.getInt("year"),rs.getDouble("price"),rs.getInt("idauthor")));
+            }
+        } catch (SQLException e) {
+            System.out.println("findAllBooks: Error in database\n" + e.getMessage());
+        } finally {
+            ConfigDB.closeConnection();
+        }
+        return booksFound;
+    }
+
 }

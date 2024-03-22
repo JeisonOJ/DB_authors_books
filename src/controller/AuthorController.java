@@ -1,9 +1,11 @@
 package controller;
 
 import entity.Author;
+import entity.Book;
 import model.AuthorModel;
 
 import javax.swing.*;
+import java.util.List;
 
 public class AuthorController {
 
@@ -109,6 +111,23 @@ public class AuthorController {
         }
 
         return list.append("\nThere are no authors in this list").toString();
+    }
+
+    public String getAllbooks(){
+        try {
+            int toSearch = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter the id to search"));
+            List<Object> objectList = authorModel.findAllBooks(toSearch);
+            if (!objectList.isEmpty()) {
+                for (Object object: objectList){
+                    Book book = (Book) object;
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Author doesn't exist in database");
+            }
+        } catch (Exception e) {
+            System.out.println("getAllbooks: no valid number\n" + e.getMessage());
+        }
+
     }
 
 }

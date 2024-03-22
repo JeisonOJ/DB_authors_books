@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class ConfigDB {
     private static final String url = "jdbc:mysql://localhost:3306/crudjdbc";
     private static final String user = "root";
-    private static final String password = "";
+    private static final String password = "Rlwl2023.";
     public static Connection connection = null;
     public static Connection openConnection(){
         try{

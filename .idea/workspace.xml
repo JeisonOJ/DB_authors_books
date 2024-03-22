@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="561410db-41f2-4c8e-819f-7d6fe21a253f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/entity/AuthorBook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB_authors_books.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DB_authors_books.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/BookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/AuthorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/AuthorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/ConfigDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/ConfigDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Author.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Author.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/AuthorModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/AuthorModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/BookModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/BookModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,8 +50,8 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Jeison/Documentos/Programacion/Java/mysql-connector-j-8.3.0.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/meta/Downloads/mysql-connector-j-8.3.0.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
@@ -67,7 +74,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-78a6f59c" />
       </set>
     </attachedChunks>
   </component>

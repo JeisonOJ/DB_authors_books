@@ -31,7 +31,8 @@ public class Main {
                 4. Delete author.
                 5. Get author By name.
                 6. Get author By id.
-                7. Exit
+                7. Show all books.
+                8. Exit
                 """;
                     do {
                         option = JOptionPane.showInputDialog(null, message);
@@ -59,13 +60,16 @@ public class Main {
                                 JOptionPane.showMessageDialog(null,controller.findAuthorById());
                                 break;
                             case "7":
+                                controller.getAllbooks();
+                                break;
+                            case "8":
                                 JOptionPane.showMessageDialog(null, "You are leaving the menu...");
                                 break;
                             default:
                                 break;
                         }
 
-                    } while (!option.equals("7"));
+                    } while (!option.equals("8"));
                     break;
                 case "2":
                     //BooksController
